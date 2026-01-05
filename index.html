@@ -749,8 +749,42 @@
         return modes[currentMode].colors;
       }
 
+      // 모드 전환 함수
+      function switchMode() {
+        currentMode = currentMode === "basic" ? "couple" : "basic";
+        const mode = modes[currentMode];
+
+        // 제목 업데이트
+        mainTitle.textContent = mode.title;
+        mainTitle.style.color = mode.themeColor;
+
+        // 모드 전환 버튼 텍스트 업데이트
+        modeSwitch.textContent = mode.switchText;
+
+        // 벌칙 목록 초기화
+        penalties = [...mode.penalties];
+
+        // 룰렛 회전 초기화
+        currentRotation = 0;
+        canvas.style.transform = "rotate(0deg)";
+
+        // 파워 게이지 초기화
+        powerLevel = 0;
+        updatePowerGauge(0);
+
+        // UI 업데이트
+        updatePenaltyList();
+        drawRoulette();
+      }
+
       // 초기화
       function init() {
+        // 현재 모드에 맞게 초기화
+        const mode = modes[currentMode];
+        mainTitle.textContent = mode.title;
+        mainTitle.style.color = mode.themeColor;
+        modeSwitch.textContent = mode.switchText;
+
         // 룰렛 회전 초기화
         currentRotation = 0;
         canvas.style.transform = "rotate(0deg)";
