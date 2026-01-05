@@ -959,9 +959,8 @@
         ctx.beginPath();
         ctx.arc(centerX, centerY, 60, 0, Math.PI * 2);
         ctx.fill();
-        // 중앙 원 배경색 (흰색)
-        // 중앙 원 테두리 (연한 회색)
-        ctx.strokeStyle = "#e2e8f0";
+        // 중앙 원 테두리 (모드에 따라 색상 변경)
+        ctx.strokeStyle = currentMode === "couple" ? "#ffc0cb" : "#e2e8f0";
         ctx.lineWidth = 3;
         ctx.stroke();
       }
