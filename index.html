@@ -891,7 +891,8 @@
           const endAngle = (index + 1) * anglePerItem;
 
           // 섹션 색상
-          ctx.fillStyle = colors[index % colors.length];
+          const currentColors = getColors();
+          ctx.fillStyle = currentColors[index % currentColors.length];
           ctx.beginPath();
           ctx.moveTo(centerX, centerY);
           ctx.arc(centerX, centerY, radius, startAngle, endAngle);
