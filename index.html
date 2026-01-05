@@ -155,6 +155,8 @@
         background: var(--bg-color);
         transition: all 0.2s;
         font-size: 0.85em;
+        cursor: pointer;
+        font-family: "Noto Sans KR", sans-serif;
       }
 
       .version-link:hover {
@@ -597,10 +599,12 @@
   </head>
   <body>
     <div class="container">
-      <h1>벌칙 룰렛</h1>
+      <h1 id="mainTitle">벌칙 룰렛</h1>
 
       <div class="version-switch">
-        <a href="couple.html" class="version-link">→ 커플 룰렛으로 이동</a>
+        <button id="modeSwitch" class="version-link">
+          → 커플 룰렛으로 이동
+        </button>
       </div>
 
       <div class="roulette-container">
@@ -658,27 +662,74 @@
       const resultModal = document.getElementById("resultModal");
       const resultText = document.getElementById("resultText");
       const closeModal = document.getElementById("closeModal");
+      const mainTitle = document.getElementById("mainTitle");
+      const modeSwitch = document.getElementById("modeSwitch");
 
-      // 원본 벌칙 데이터 배열 (초기화용)
-      const originalPenalties = [
-        "누나/언니/형/오빠 호칭 쓰기",
-        "옆 테이블 가서 인사하고 오기",
-        '부모님께 "키워주셔서 감사" 전화',
-        '지인에게 전화해 "사랑해" 듣기',
-        "2차 계산하기 (지갑 오픈)",
-        "다같이 릴스/틱톡 찍기",
-        "흑역사 엽사 공개",
-        "카톡 프사 1시간 동안 엽사",
-        "전애인/짝사랑 SNS 좋아요 누르기",
-        "갤러리 10번째 사진 무조건 공개",
-        '가족톡방 "사랑해" 보내고 캡쳐',
-        "오늘 하루종일 극존칭 쓰기",
-        '편의점 가서 "저 기억 안 나세요?" 묻기',
-        "무반주 댄스 30초 (제로투 등)",
-      ];
+      // 모드 데이터 구조
+      const modes = {
+        basic: {
+          title: "벌칙 룰렛",
+          switchText: "→ 커플 룰렛으로 이동",
+          themeColor: "#1a202c",
+          penalties: [
+            "누나/언니/형/오빠 호칭 쓰기",
+            "옆 테이블 가서 인사하고 오기",
+            '부모님께 "키워주셔서 감사" 전화',
+            '지인에게 전화해 "사랑해" 듣기',
+            "2차 계산하기 (지갑 오픈)",
+            "다같이 릴스/틱톡 찍기",
+            "흑역사 엽사 공개",
+            "카톡 프사 1시간 동안 엽사",
+            "전애인/짝사랑 SNS 좋아요 누르기",
+            "갤러리 10번째 사진 무조건 공개",
+            '가족톡방 "사랑해" 보내고 캡쳐',
+            "오늘 하루종일 극존칭 쓰기",
+            '편의점 가서 "저 기억 안 나세요?" 묻기',
+            "무반주 댄스 30초 (제로투 등)",
+          ],
+          colors: [
+            "#FF6B6B", // 레드
+            "#4D96FF", // 블루
+            "#FFD93D", // 옐로우
+            "#6BCB77", // 그린
+            "#9D4EDD", // 퍼플
+          ],
+        },
+        couple: {
+          title: "19금 커플 룰렛",
+          switchText: "→ 벌칙 룰렛으로 이동",
+          themeColor: "#ff69b4",
+          penalties: [
+            "상대방에게 '사랑해' 10번 말하기",
+            "상대방에게 귀여운 별명 지어주기",
+            "상대방 SNS에 커플 사진 올리기",
+            "상대방 부모님께 전화하기",
+            "상대방 친구들 앞에서 고백하기",
+            "상대방에게 편지 쓰기",
+            "상대방 좋아하는 노래 부르기",
+            "상대방에게 반지 선물하기",
+            "상대방 집 앞에서 기다리기",
+            "상대방에게 꽃다발 주기",
+            "상대방과 데이트 코스 계획하기",
+            "상대방에게 케이크 주문하기",
+            "상대방과 함께 요리하기",
+            "상대방에게 깜짝 이벤트 준비하기",
+          ],
+          colors: [
+            "#FF69B4", // 핫핑크
+            "#FFB6C1", // 라이트핑크
+            "#FF91A4", // 로즈핑크
+            "#FFC0CB", // 핑크
+            "#FFB3BA", // 바블검핑크
+          ],
+        },
+      };
+
+      // 현재 모드 상태
+      let currentMode = "basic";
 
       // 벌칙 데이터 배열 (사용자가 수정 가능)
-      let penalties = [...originalPenalties];
+      let penalties = [...modes[currentMode].penalties];
 
       // 룰렛 회전 관련 변수
       let currentRotation = 0;
@@ -693,14 +744,10 @@
       let chargeInterval = null;
       const MAX_CHARGE_TIME = 2000; // 최대 충전 시간 (2초)
 
-      // 룰렛 원색 팔레트 (채도 높은 선명한 색상)
-      const colors = [
-        "#FF6B6B", // 레드
-        "#4D96FF", // 블루
-        "#FFD93D", // 옐로우
-        "#6BCB77", // 그린
-        "#9D4EDD", // 퍼플
-      ];
+      // 현재 모드의 룰렛 색상 가져오기
+      function getColors() {
+        return modes[currentMode].colors;
+      }
 
       // 초기화
       function init() {
@@ -762,7 +809,7 @@
       // 벌칙 초기화 함수
       function resetPenalties() {
         if (confirm("벌칙 목록을 초기 상태로 되돌리시겠습니까?")) {
-          penalties = [...originalPenalties];
+          penalties = [...modes[currentMode].penalties];
           updatePenaltyList();
           drawRoulette();
         }
@@ -1095,6 +1142,9 @@
           stopCharging();
         }
       });
+
+      // 모드 전환 버튼 이벤트
+      modeSwitch.addEventListener("click", switchMode);
 
       // 벌칙 추가 버튼 이벤트
       addButton.addEventListener("click", addPenalty);
