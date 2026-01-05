@@ -695,9 +695,9 @@
             "#9D4EDD", // 퍼플
           ],
         },
-        couple: {
-          title: "19금 커플 룰렛",
-          switchText: "→ 벌칙 룰렛으로 이동",
+        couple_normal: {
+          title: "19금 커플 룰렛 (보통맛)",
+          switchText: "→ 매운맛으로 이동",
           themeColor: "#ff69b4",
           penalties: [
             "상대방에게 키스 10초 하기",
@@ -721,6 +721,34 @@
             "#FF91A4", // 로즈핑크
             "#FFC0CB", // 핑크
             "#FFB3BA", // 바블검핑크
+          ],
+        },
+        couple_spicy: {
+          title: "19금 커플 룰렛 (매운맛)",
+          switchText: "→ 벌칙 룰렛으로 이동",
+          themeColor: "#ff1493",
+          penalties: [
+            "딥키스 10초 하기",
+            "원하는 부위에 키스",
+            "귀 깨물고 야한 말 속삭이기",
+            "전신 마사지 10분 (부위 지정)",
+            "입에서 입으로 얼음 옮기기",
+            "상의 탈의 (or 옷 하나 벗기)",
+            "무릎 위에 앉아서 게임하기",
+            "무반주 섹시 댄스 30초",
+            "원하는 코스프레 해주기 (약속)",
+            "목덜미/쇄골에 진한 키스",
+            "소원 1개 들어주기 (거부 불가)",
+            "서로 꽉 껴안고 1분 버티기",
+            "오늘 밤 '주인님'으로 모시기",
+            "꽝 (다음 기회에...)",
+          ],
+          colors: [
+            "#FF1493", // 딥핑크
+            "#FF69B4", // 핫핑크
+            "#FF6B9D", // 로즈
+            "#FF91A4", // 로즈핑크
+            "#C71585", // 미디엄 바이올렛 레드
           ],
         },
       };
@@ -751,7 +779,14 @@
 
       // 모드 전환 함수
       function switchMode() {
-        currentMode = currentMode === "basic" ? "couple" : "basic";
+        // 모드 순환: basic -> couple_normal -> couple_spicy -> basic
+        if (currentMode === "basic") {
+          currentMode = "couple_normal";
+        } else if (currentMode === "couple_normal") {
+          currentMode = "couple_spicy";
+        } else {
+          currentMode = "basic";
+        }
         const mode = modes[currentMode];
 
         // 제목 업데이트
@@ -997,7 +1032,10 @@
         ctx.arc(centerX, centerY, 60, 0, Math.PI * 2);
         ctx.fill();
         // 중앙 원 테두리 (모드에 따라 색상 변경)
-        ctx.strokeStyle = currentMode === "couple" ? "#ffc0cb" : "#e2e8f0";
+        ctx.strokeStyle = 
+          currentMode === "couple_normal" || currentMode === "couple_spicy" 
+            ? "#ffc0cb" 
+            : "#e2e8f0";
         ctx.lineWidth = 3;
         ctx.stroke();
       }
