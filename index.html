@@ -785,6 +785,9 @@
         mainTitle.style.color = mode.themeColor;
         modeSwitch.textContent = mode.switchText;
 
+        // 벌칙 목록 초기화 (중요!)
+        penalties = [...mode.penalties];
+
         // 룰렛 회전 초기화
         currentRotation = 0;
         canvas.style.transform = "rotate(0deg)";
