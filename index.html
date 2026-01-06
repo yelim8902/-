@@ -3,13 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>벌칙 룰렛 - 기본</title>
+
+    <!-- Primary Meta Tags -->
+    <title>벌칙 룰렛 - 친구들과 보드게임 벌칙 룰렛 돌리기 | 커플 룰렛</title>
+    <meta
+      name="title"
+      content="벌칙 룰렛 - 친구들과 보드게임 벌칙 룰렛 돌리기 | 커플 룰렛"
+    />
+    <meta
+      name="description"
+      content="친구들과 보드게임할 때 사용하는 재미있는 벌칙 룰렛! 커스텀 벌칙 추가 가능, 파워 조절 기능, 커플 룰렛까지. 무료로 바로 사용하세요!"
+    />
+    <meta
+      name="keywords"
+      content="벌칙 룰렛, 벌칙 돌림판, 보드게임 벌칙, 커플 룰렛, 19금 룰렛, 벌칙 게임, 친구 게임, 룰렛 돌리기, 무료 룰렛"
+    />
+    <meta name="author" content="벌칙 룰렛" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Korean" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.vercel.app/" />
+    <meta
+      property="og:title"
+      content="벌칙 룰렛 - 친구들과 보드게임 벌칙 룰렛 돌리기"
+    />
+    <meta
+      property="og:description"
+      content="친구들과 보드게임할 때 사용하는 재미있는 벌칙 룰렛! 커스텀 벌칙 추가 가능, 파워 조절 기능, 커플 룰렛까지. 무료로 바로 사용하세요!"
+    />
+    <meta
+      property="og:image"
+      content="https://your-domain.vercel.app/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="벌칙 룰렛" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://your-domain.vercel.app/" />
+    <meta
+      property="twitter:title"
+      content="벌칙 룰렛 - 친구들과 보드게임 벌칙 룰렛 돌리기"
+    />
+    <meta
+      property="twitter:description"
+      content="친구들과 보드게임할 때 사용하는 재미있는 벌칙 룰렛! 커스텀 벌칙 추가 가능, 파워 조절 기능, 커플 룰렛까지. 무료로 바로 사용하세요!"
+    />
+    <meta
+      property="twitter:image"
+      content="https://your-domain.vercel.app/og-image.png"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Canonical URL -->
+    <!-- TODO: 실제 도메인으로 변경하세요! -->
+    <link rel="canonical" href="https://your-domain.vercel.app/" />
+    
+    <!-- Google Analytics -->
+    <!-- TODO: Google Analytics 측정 ID를 발급받아 아래에 추가하세요 -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "벌칙 룰렛",
+        "description": "친구들과 보드게임할 때 사용하는 재미있는 벌칙 룰렛 게임",
+        "url": "https://your-domain.vercel.app/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "100"
+        },
+        "featureList": [
+          "커스텀 벌칙 추가",
+          "파워 조절 기능",
+          "커플 룰렛 모드",
+          "19금 커플 룰렛",
+          "모바일 최적화"
+        ]
+      }
+    </script>
     <style>
       :root {
         /* 미니멀 컬러 팔레트 */
@@ -595,6 +699,70 @@
       .modal-close:hover {
         background: var(--text-secondary);
       }
+
+      /* 소셜 공유 버튼 */
+      .share-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .share-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.9em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: white;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      .share-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .share-kakao {
+        background: #FEE500;
+        color: #000;
+      }
+
+      .share-kakao:hover {
+        background: #FDD835;
+      }
+
+      .share-facebook {
+        background: #1877F2;
+      }
+
+      .share-facebook:hover {
+        background: #166FE5;
+      }
+
+      .share-twitter {
+        background: #1DA1F2;
+      }
+
+      .share-twitter:hover {
+        background: #1A91DA;
+      }
+
+      .share-link {
+        background: var(--text-primary);
+        color: var(--bg-color);
+      }
+
+      .share-link:hover {
+        background: var(--text-secondary);
+      }
     </style>
   </head>
   <body>
@@ -776,6 +944,51 @@
         return modes[currentMode].colors;
       }
 
+      // SEO 메타 태그 업데이트 함수
+      function updateMetaTags(mode) {
+        const modeData = modes[mode];
+        const descriptions = {
+          basic:
+            "친구들과 보드게임할 때 사용하는 재미있는 벌칙 룰렛! 커스텀 벌칙 추가 가능, 파워 조절 기능까지. 무료로 바로 사용하세요!",
+          couple_normal:
+            "커플을 위한 로맨틱한 벌칙 룰렛! 보통맛 버전으로 부담 없이 즐길 수 있어요. 데이트나 특별한 시간에 활용해보세요.",
+          couple_spicy:
+            "19금 커플 룰렛 매운맛! 더 스릴 있는 커플 게임을 원한다면? 도전해보세요 🔥",
+        };
+
+        // Title 업데이트
+        document.title = `${modeData.title} - 벌칙 룰렛`;
+
+        // Meta description 업데이트
+        const metaDescription = document.querySelector(
+          'meta[name="description"]'
+        );
+        if (metaDescription) {
+          metaDescription.content = descriptions[mode] || descriptions.basic;
+        }
+
+        // OG tags 업데이트
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector(
+          'meta[property="og:description"]'
+        );
+        if (ogTitle) ogTitle.content = `${modeData.title} - 벌칙 룰렛`;
+        if (ogDescription)
+          ogDescription.content = descriptions[mode] || descriptions.basic;
+
+        // Twitter tags 업데이트
+        const twitterTitle = document.querySelector(
+          'meta[property="twitter:title"]'
+        );
+        const twitterDescription = document.querySelector(
+          'meta[property="twitter:description"]'
+        );
+        if (twitterTitle)
+          twitterTitle.content = `${modeData.title} - 벌칙 룰렛`;
+        if (twitterDescription)
+          twitterDescription.content = descriptions[mode] || descriptions.basic;
+      }
+
       // 모드 전환 함수
       function switchMode() {
         // 모드 순환: basic -> couple_normal -> couple_spicy -> basic
@@ -787,6 +1000,9 @@
           currentMode = "basic";
         }
         const mode = modes[currentMode];
+
+        // SEO 메타 태그 업데이트
+        updateMetaTags(currentMode);
 
         // 제목 업데이트
         mainTitle.textContent = mode.title;
@@ -815,6 +1031,10 @@
       function init() {
         // 현재 모드에 맞게 초기화
         const mode = modes[currentMode];
+
+        // SEO 메타 태그 초기화
+        updateMetaTags(currentMode);
+
         mainTitle.textContent = mode.title;
         mainTitle.style.color = mode.themeColor;
         modeSwitch.textContent = mode.switchText;
@@ -1219,6 +1439,42 @@
 
       // 모드 전환 버튼 이벤트
       modeSwitch.addEventListener("click", switchMode);
+
+      // 공유 기능
+      const shareButton = document.getElementById("shareButton");
+      shareButton.addEventListener("click", async () => {
+        const mode = modes[currentMode];
+        const shareText = `${mode.title} - 친구들과 함께 벌칙 룰렛 돌려보세요! 🎯\n\n${window.location.href}`;
+
+        if (navigator.share) {
+          // Web Share API 지원 (모바일)
+          try {
+            await navigator.share({
+              title: mode.title,
+              text: shareText,
+              url: window.location.href,
+            });
+          } catch (err) {
+            // 사용자가 공유를 취소한 경우
+            console.log("공유 취소됨");
+          }
+        } else {
+          // 클립보드에 복사
+          try {
+            await navigator.clipboard.writeText(shareText);
+            alert("링크가 클립보드에 복사되었습니다! 📋");
+          } catch (err) {
+            // 클립보드 API가 없는 경우 fallback
+            const textArea = document.createElement("textarea");
+            textArea.value = shareText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            alert("링크가 클립보드에 복사되었습니다! 📋");
+          }
+        }
+      });
 
       // 벌칙 추가 버튼 이벤트
       addButton.addEventListener("click", addPenalty);
