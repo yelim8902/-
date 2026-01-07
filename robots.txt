@@ -7,6 +7,11 @@ User-agent: Googlebot
 Allow: /
 Allow: /sitemap.xml
 
+# 네이버 봇 명시적 허용
+User-agent: Yeti
+Allow: /
+Allow: /sitemap.xml
+
 # 사이트맵 위치 명시
 Sitemap: https://penalty-roulette.vercel.app/sitemap.xml
 
